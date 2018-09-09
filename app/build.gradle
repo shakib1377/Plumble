@@ -18,9 +18,13 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.1.4'
     }
 }
 apply plugin: 'com.android.application'
@@ -28,6 +32,10 @@ apply plugin: 'com.android.application'
 repositories {
     mavenCentral()
     jcenter()
+    maven {
+        url 'https://maven.google.com/'
+        name 'Google'
+    }
 }
 
 dependencies {
@@ -47,12 +55,12 @@ def signingFile = file 'signing.gradle';
 if (signingFile.exists()) apply from: 'signing.gradle'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 28
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
-        minSdkVersion 12
-        targetSdkVersion 21
+        minSdkVersion 14
+        targetSdkVersion 28
         applicationId "com.morlunk.mumbleclient"
         versionCode 73
         versionName "3.3.0-rc1"
@@ -84,6 +92,7 @@ android {
             applicationId "com.morlunk.mumbleclient.jenkins"
         }
     }
+    flavorDimensions "default"
     splits {
         abi {
             enable true
